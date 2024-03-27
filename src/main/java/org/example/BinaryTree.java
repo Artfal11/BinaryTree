@@ -4,37 +4,35 @@ public class BinaryTree {
     public Node root;
 
     static class Node{
-        int key;
         int value;
         Node left;
         Node right;
 
-        Node(int key, int value) {
-            this.key = key;
+        Node(int value) {
             this.value = value;
         }
     }
-    public void add(int k, int v) {
+    public void add(int k) {
         Node x = root;
         Node y = null;
         while (x != null) {
-            if (k == x.key) {
-                x.value = v;
+            if (k == x.value) {
+                x.value = k;
                 return;
             } else {
                 y = x;
-                if (k < x.key) {
+                if (k < x.value) {
                     x = x.left;
                 } else {
                     x = x.right;
                 }
             }
         }
-        Node newNode = new Node(k, v);
+        Node newNode = new Node(k);
         if (y == null) {
             root = newNode;
         } else {
-            if (k < y.key) {
+            if (k < y.value) {
                 y.left = newNode;
             } else {
                 y.right = newNode;
@@ -75,7 +73,6 @@ public class BinaryTree {
             traverseRecursivePostOrder(node.left);
             traverseRecursivePostOrder(node.right);
             System.out.println("node = " + node.value);
-
         }
     }
 }
